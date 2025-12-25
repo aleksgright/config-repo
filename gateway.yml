@@ -13,29 +13,12 @@ spring:
           lower-case-service-id: true
 
       routes:
-#        - id: user-service-swagger
-#          uri: lb://user-service
-#          predicates:
-#            - Path=/api/v1/user/v3/api-docs
-#          filters:
-#            - StripPrefix=3
-
-        - id: user-accounter
-          uri: lb://user-accounter
-          predicates:
-            - Path=/api/user/**
-
-#        - id: main-swagger
-#          uri: lb://app
-#          predicates:
-#            - Path=/v3/api-docs
-#          filters:
-#            - StripPrefix=3
-
-        - id: main
+        - id: app-route
           uri: lb://app
           predicates:
             - Path=/**
+          filters:
+            - SetPath=/{path}
 
 
 #springdoc:
