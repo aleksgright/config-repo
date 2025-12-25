@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-accounter
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"

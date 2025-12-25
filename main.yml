@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: app
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
