@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: false
+
+      routes:
+#        - id: user-service-swagger
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/api/v1/user/v3/api-docs
+#          filters:
+#            - StripPrefix=3
+
+        - id: user-accounter
+          uri: lb://user-accounter
+          predicates:
+            - Path=/api/user/**
+
+#        - id: main-swagger
+#          uri: lb://app
+#          predicates:
+#            - Path=/v3/api-docs
+#          filters:
+#            - StripPrefix=3
+
+        - id: main
+          uri: lb://app
+          predicates:
+            - Path=/**
+
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+#    path: /swagger-ui/index.html
+#    config-url: /v3/api-docs/swagger-config
+#    urls:
+#      - url: /v3/api-docs
+#        name: API Gateway Service
+#      - url: /api/v1/user/v3/api-docs
+#        name: User Service
+#      - url: /api/v1/event/v3/api-docs
+#        name: Event Service
+#      - url: /api/v1/group-event/v3/api-docs
+#        name: Group Event Service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://host.docker.internal:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
