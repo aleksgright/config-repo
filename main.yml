@@ -40,7 +40,7 @@ eureka:
     service-url:
       defaultZone: http://host.docker.internal:8761/eureka/
     fetch-registry: false
-    register-with-eureka: true
+    register-with-eureka: false
   instance:
     prefer-ip-address: true
     hostname: highload-app
