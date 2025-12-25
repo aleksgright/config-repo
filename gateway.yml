@@ -14,7 +14,7 @@ spring:
 
       routes:
         - id: app-route
-          uri: lb://app
+          uri: http://localhost:8082
           predicates:
             - Path=/**
           filters:
