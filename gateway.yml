@@ -17,8 +17,6 @@ spring:
           uri: http://localhost:8082
           predicates:
             - Path=/**
-          filters:
-            - SetPath=/{path}
 
 
 #springdoc:
