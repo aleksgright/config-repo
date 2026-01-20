@@ -18,6 +18,16 @@ spring:
           predicates:
             - Path=/**
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+  instance:
+    prefer-ip-address: true
+
 
 #springdoc:
 #  api-docs:
@@ -35,12 +45,3 @@ spring:
 #        name: Event Service
 #      - url: /api/v1/group-event/v3/api-docs
 #        name: Group Event Service
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-  instance:
-    prefer-ip-address: true
