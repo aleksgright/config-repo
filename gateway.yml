@@ -7,35 +7,37 @@ spring:
 
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
 
-      routes:
-        - id: user-swagger
-          uri: lb://user-accounter
-          predicates:
-            - Path=/user/v3/api-docs
-          filters:
-            - StripPrefix=1
+          routes:
+            - id: user-swagger
+              uri: lb://user-accounter
+              predicates:
+                - Path=/user/v3/api-docs
+              filters:
+                - StripPrefix=1
 
-        - id: user-accounter-route
-          uri: lb://user-accounter
-          predicates:
-            - Path=/user/**
+            - id: user-accounter-route
+              uri: lb://user-accounter
+              predicates:
+                - Path=/user/**
 
-        - id: app-swagger
-          uri: lb://app
-          predicates:
-            - Path=/app/v3/api-docs
-          filters:
-            - StripPrefix=1
+            - id: app-swagger
+              uri: lb://app
+              predicates:
+                - Path=/app/v3/api-docs
+              filters:
+                - StripPrefix=1
 
-        - id: app-route
-          uri: lb://app
-          predicates:
-            - Path=/**
+            - id: app-route
+              uri: lb://app
+              predicates:
+                - Path=/**
 
 eureka:
   client:
@@ -56,21 +58,3 @@ springdoc:
         url: /app/v3/api-docs
       - name: User Accounter
         url: /user/v3/api-docs
-
-
-#springdoc:
-#  api-docs:
-#    enabled: true
-#  swagger-ui:
-#    enabled: true
-#    path: /swagger-ui/index.html
-#    config-url: /v3/api-docs/swagger-config
-#    urls:
-#      - url: /v3/api-docs
-#        name: API Gateway Service
-#      - url: /api/v1/user/v3/api-docs
-#        name: User Service
-#      - url: /api/v1/event/v3/api-docs
-#        name: Event Service
-#      - url: /api/v1/group-event/v3/api-docs
-#        name: Group Event Service
