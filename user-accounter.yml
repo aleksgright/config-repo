@@ -5,8 +5,7 @@ spring:
   application:
     name: user-accounter
 
-  datasource:
-    driver-class-name: org.postgresql.Driver
+  r2dbc:
     url: r2dbc:postgresql://highload-db:5432/highload
     username: postgres
     password: password
