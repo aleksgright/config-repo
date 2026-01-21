@@ -58,3 +58,9 @@ springdoc:
         url: /app/v3/api-docs
       - name: User Accounter
         url: /user/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,mappings
