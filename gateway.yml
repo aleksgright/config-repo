@@ -37,7 +37,9 @@ spring:
             - id: app-route
               uri: lb://app
               predicates:
-                - Path=/**
+                - Path=/app/**
+              filters:
+                - StripPrefix=1
 
 eureka:
   client:
