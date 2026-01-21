@@ -13,6 +13,11 @@ spring:
           lower-case-service-id: true
 
       routes:
+        - id: user-accounter-route
+          uri: lb://user-accounter
+          predicates:
+            - Path=/user/**
+
         - id: app-route
           uri: lb://app
           predicates:
