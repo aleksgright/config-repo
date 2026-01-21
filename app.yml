@@ -30,7 +30,3 @@ springdoc:
   api-docs:
     enabled: true
     path: /v3/api-docs
-
-    servers:
-      - url: http://localhost:8080/app
-        description: API Gateway

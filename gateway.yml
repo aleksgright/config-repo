@@ -1,4 +1,5 @@
 server:
+  forward-headers-strategy: framework
   port: 8080
 
 spring:
@@ -21,11 +22,14 @@ spring:
                 - Path=/user/v3/api-docs
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix, /user
 
             - id: user-accounter-route
               uri: lb://user-accounter
               predicates:
                 - Path=/user/**
+              filters:
+                - AddRequestHeader=X-Forwarded-Prefix, /user
 
             - id: app-swagger
               uri: lb://app
@@ -33,6 +37,7 @@ spring:
                 - Path=/app/v3/api-docs
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix, /app
 
             - id: app-route
               uri: lb://app
@@ -40,6 +45,7 @@ spring:
                 - Path=/app/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix, /app
 
 eureka:
   client:
