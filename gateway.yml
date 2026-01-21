@@ -13,10 +13,24 @@ spring:
           lower-case-service-id: true
 
       routes:
+        - id: user-swagger
+          uri: lb://user-accounter
+          predicates:
+            - Path=/user/v3/api-docs
+          filters:
+            - StripPrefix=1
+
         - id: user-accounter-route
           uri: lb://user-accounter
           predicates:
             - Path=/user/**
+
+        - id: app-swagger
+          uri: lb://app
+          predicates:
+            - Path=/app/v3/api-docs
+          filters:
+            - StripPrefix=1
 
         - id: app-route
           uri: lb://app
@@ -32,6 +46,16 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    urls:
+      - name: App Service
+        url: /app/v3/api-docs
+      - name: User Accounter
+        url: /user/v3/api-docs
 
 
 #springdoc:
