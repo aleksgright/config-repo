@@ -5,14 +5,8 @@ spring:
   application:
     name: menu-service
 
-  jpa:
-    database: postgresql
-    hibernate:
-      ddl-auto: update
-
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://highload-db:5433/highload
+  r2dbc:
+    url: r2dbc:postgresql://highload-db:5433/highload
     username: postgres
     password: password
 
