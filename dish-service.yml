@@ -8,13 +8,19 @@ spring:
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://dish-service-db:5432/highload
     username: postgres
     password: password
+  
+  liquibase:
+    enabled:
+      true
+    change-log:
+      db/changelog/db.changelog-master.xml
 
 app:
   default-page-size: 50
