@@ -6,7 +6,7 @@ spring:
     name: user-accounter
 
   r2dbc:
-    url: r2dbc:postgresql://user-accounter-db:5434/highload
+    url: r2dbc:postgresql://user-accounter-db:5432/highload
     username: postgres
     password: password
 

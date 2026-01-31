@@ -6,7 +6,7 @@ spring:
     name: menu-service
 
   r2dbc:
-    url: r2dbc:postgresql://menu-service-db:5433/highload
+    url: r2dbc:postgresql://menu-service-db:5432/highload
     username: postgres
     password: password
 
