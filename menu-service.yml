@@ -11,6 +11,9 @@ spring:
     password: password
 
   liquibase:
+    url: jdbc:postgresql://menu-service-db:5432/highload
+    user: postgres
+    password: password
     enabled:
       true
     change-log:
