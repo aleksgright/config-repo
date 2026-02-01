@@ -59,7 +59,6 @@ spring:
               - PATCH
             allowed-headers:
               - "*"
-            allow-credentials: true
 
 eureka:
   client:
