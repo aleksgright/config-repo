@@ -40,17 +40,17 @@ spring:
             - id: user-accounter
               uri: lb://user-accounter
               predicates:
-                - Path=/user-accounter/**
+                - Path=/user/**
 
             - id: dish-service
               uri: lb://dish-service
               predicates:
-                - Path=/dish-service/**
+                - Path=/dish/**,/item/**
 
             - id: menu-service
               uri: lb://menu-service
               predicates:
-                - Path=/menu-service/**
+                - Path=/menu/**
 
 eureka:
   client:
