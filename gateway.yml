@@ -16,49 +16,18 @@ spring:
               lower-case-service-id: true
 
           routes:
-            - id: user-swagger
-              uri: lb://user-accounter
-              predicates:
-                - Path=/user/v3/api-docs
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /user
-
-            - id: user-accounter-route
+            - id: user-accounter
               uri: lb://user-accounter
               predicates:
                 - Path=/user/**
               filters:
-                - AddRequestHeader=X-Forwarded-Prefix, /user
+                - RewritePath=/user-accounter/(?<segment>.*), /$\{segment}
 
-            - id: app-swagger
-              uri: lb://app
-              predicates:
-                - Path=/app/v3/api-docs
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /app
-
-            - id: app-route
+            - id: app
               uri: lb://app
               predicates:
                 - Path=/app/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /app
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowed-origins: "*"
-            allowed-methods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-              - PATCH
-            allowed-headers:
-              - "*"
+
 
 eureka:
   client:
