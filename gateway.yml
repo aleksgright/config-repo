@@ -19,38 +19,38 @@ spring:
             - id: user-accounter-swagger
               uri: lb://user-accounter
               predicates:
-                - Path=/user-acc/v3/api-docs
+                - Path=/user-accounter/v3/api-docs
               filters:
-                - RewritePath=/user-acc/(?<segment>.*), /$\{segment}
+                - RewritePath=/user-accounter/(?<segment>.*), /$\{segment}
 
             - id: dish-service-swagger
               uri: lb://dish-service
               predicates:
-                - Path=/dish-serv/v3/api-docs
+                - Path=/dish-service/v3/api-docs
               filters:
-                - RewritePath=/dish-serv/(?<segment>.*), /$\{segment}
+                - RewritePath=/dish-service/(?<segment>.*), /$\{segment}
 
             - id: menu-service-swagger
               uri: lb://menu-service
               predicates:
-                - Path=/menu-serv/v3/api-docs
+                - Path=/menu-service/v3/api-docs
               filters:
-                - RewritePath=/menu-serv/(?<segment>.*), /$\{segment}
+                - RewritePath=/menu-service/(?<segment>.*), /$\{segment}
 
             - id: user-accounter
               uri: lb://user-accounter
               predicates:
-                - Path=/user-acc/**
+                - Path=/user-accounter/**
 
             - id: dish-service
               uri: lb://dish-service
               predicates:
-                - Path=/dish-serv/**
+                - Path=/dish-service/**
 
             - id: menu-service
               uri: lb://menu-service
               predicates:
-                - Path=/menu-serv/**
+                - Path=/menu-service/**
 
 eureka:
   client:
@@ -69,11 +69,11 @@ springdoc:
     disable-swagger-default-url: true
     urls:
       - name: Dish Service
-        url: /dish-serv/v3/api-docs
+        url: /dish-service/v3/api-docs
       - name: Menu Service
-        url: /menu-serv/v3/api-docs
+        url: /menu-service/v3/api-docs
       - name: User Accounter
-        url: /user-acc/v3/api-docs
+        url: /user-accounter/v3/api-docs
 
 management:
   endpoints:
