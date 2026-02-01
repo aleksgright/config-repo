@@ -16,37 +16,26 @@ spring:
               lower-case-service-id: true
 
           routes:
-            - id: user-swagger
-              uri: lb://user-accounter
-              predicates:
-                - Path=/user/v3/api-docs
-              filters:
-                - RewritePath=/user-accounter/(?<segment>.*), /$\{segment}
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /user
-
             - id: user-accounter-route
               uri: lb://user-accounter
               predicates:
-                - Path=/user/**
+                - Path=/user-accounter/**
               filters:
                 - RewritePath=/user-accounter/(?<segment>.*), /$\{segment}
 
-            - id: app-swagger
-              uri: lb://app
+            - id: dish-route
+              uri: lb://dish-service
               predicates:
-                - Path=/app/v3/api-docs
+                - Path=/dish-service/**
               filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /app
+                - RewritePath=/dish-service/(?<segment>.*), /$\{segment}
 
-            - id: app-route
-              uri: lb://app
+            - id: menu-route
+              uri: lb://menu-service
               predicates:
-                - Path=/app/**
+                - Path=/menu-service/**
               filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix, /app
+                - RewritePath=/menu-service/(?<segment>.*), /$\{segment}
   
 
 eureka:
@@ -65,10 +54,12 @@ springdoc:
     path: /swagger-ui.html
     disable-swagger-default-url: true
     urls:
-      - name: App Service
-        url: /app/v3/api-docs
+      - name: Menu Service
+        url: /menu-service/v3/api-docs
+      - name: Dish Service
+        url: /dish-service/v3/api-docs
       - name: User Accounter
-        url: /user/v3/api-docs
+        url: /user-accounter/v3/api-docs
 
 management:
   endpoints:

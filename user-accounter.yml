@@ -20,9 +20,6 @@ spring:
       changelog/db.changelog-master.xml
 
 eureka:
-  instance:
-    hostname: user-accounter
-    prefer-ip-address: false
   client:
     enabled: true
     service-url:
