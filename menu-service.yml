@@ -33,37 +33,3 @@ springdoc:
   api-docs:
     enabled: true
     path: /v3/api-docs
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      dish-service:
-        registerHealthIndicator: true
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 3
-        failureRateThreshold: 50
-        slowCallDurationThreshold: 2000
-        slowCallRateThreshold: 50
-      user-accounter:
-        registerHealthIndicator: true
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 3
-        failureRateThreshold: 50
-        slowCallDurationThreshold: 2000
-        slowCallRateThreshold: 50
-  timelimiter:
-    instances:
-      dish-service:
-        timeoutDuration: 10s
-      user-accounter:
-        timeoutDuration: 10s
-
-reactive:
-  feign:
-    circuit:
-      breaker:
-        enabled: false
-
-feign:
-  circuitbreaker:
-    enabled: true
