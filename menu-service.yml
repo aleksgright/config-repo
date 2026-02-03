@@ -2,10 +2,6 @@ server:
   port: 8083
 
 spring:
-  cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true
   application:
     name: menu-service
 
@@ -37,6 +33,30 @@ springdoc:
   api-docs:
     enabled: true
     path: /v3/api-docs
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      dish-service:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2000
+        slowCallRateThreshold: 50
+      user-accounter:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2000
+        slowCallRateThreshold: 50
+  timelimiter:
+    instances:
+      product-service:
+        timeoutDuration: 10s
+      user-service:
+        timeoutDuration: 10s
 
 feign:
   circuitbreaker:
