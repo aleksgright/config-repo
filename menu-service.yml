@@ -58,6 +58,12 @@ resilience4j:
       user-accounter:
         timeoutDuration: 10s
 
+reactive:
+  feign:
+    circuit:
+      breaker:
+        enabled: false
+
 feign:
   circuitbreaker:
     enabled: true
