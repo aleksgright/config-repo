@@ -53,9 +53,9 @@ resilience4j:
         slowCallRateThreshold: 50
   timelimiter:
     instances:
-      product-service:
+      dish-service:
         timeoutDuration: 10s
-      user-service:
+      user-accounter:
         timeoutDuration: 10s
 
 feign:
