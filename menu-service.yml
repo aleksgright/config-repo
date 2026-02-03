@@ -2,6 +2,10 @@ server:
   port: 8083
 
 spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
   application:
     name: menu-service
 
@@ -34,8 +38,6 @@ springdoc:
     enabled: true
     path: /v3/api-docs
 
-reactive:
-  feign:
-    circuit:
-      breaker:
-        enabled: true
+feign:
+  circuitbreaker:
+    enabled: true
