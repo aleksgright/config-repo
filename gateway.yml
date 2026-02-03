@@ -41,16 +41,31 @@ spring:
               uri: lb://user-accounter
               predicates:
                 - Path=/user/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: myCircuitBreaker
+                    fallbackUri: forward:/service-unavailable
 
             - id: dish-service
               uri: lb://dish-service
               predicates:
                 - Path=/dish/**,/item/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: myCircuitBreaker
+                    fallbackUri: forward:/service-unavailable
 
             - id: menu-service
               uri: lb://menu-service
               predicates:
                 - Path=/menu/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: Circuit Breaker
+                    fallbackUri: forward:/service-unavailable
 
 eureka:
   client:
