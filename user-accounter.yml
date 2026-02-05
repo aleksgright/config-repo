@@ -29,3 +29,9 @@ springdoc:
   api-docs:
     enabled: true
     path: /v3/api-docs
+
+token:
+  signing:
+    key: SSByZWFsbHkgbGlrZSB0aGlzIHVuaXZlcnNpdHksIHNhdmUgbWU
+  validity:
+    period: 300000
