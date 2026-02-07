@@ -32,6 +32,6 @@ springdoc:
 
 token:
   signing:
-    key: SSByZWFsbHkgbGlrZSB0aGlzIHVuaXZlcnNpdHksIHNhdmUgbWU
+    key: ${JWT_SECRET_KEY}
   validity:
-    period: 300000
+    period: ${JWT_VALIDITY_PERIOD}

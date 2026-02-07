@@ -36,4 +36,4 @@ springdoc:
 
 token:
   signing:
-    key: SSByZWFsbHkgbGlrZSB0aGlzIHVuaXZlcnNpdHksIHNhdmUgbWU
+    key: ${JWT_SECRET_KEY}
