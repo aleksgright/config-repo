@@ -1,0 +1,42 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: file-service
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://dish-service-db:5432/highload
+    username: postgres
+    password: password
+
+  liquibase:
+    enabled:
+      true
+    change-log:
+      db/changelog/db.changelog-master.xml
+
+app:
+  default-page-size: 50
+  max-page-size: 50
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+
+token:
+  signing:
+    key: ${JWT_SECRET_KEY}
