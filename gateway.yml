@@ -106,6 +106,8 @@ springdoc:
         url: /menu-service/v3/api-docs
       - name: User Accounter
         url: /user-accounter/v3/api-docs
+      - name: File Accounter
+        url: /file-service/v3/api-docs
       - name: Application
         url: /v3/api-docs/aggregated
 
