@@ -37,6 +37,13 @@ spring:
               filters:
                 - RewritePath=/menu-service/(?<segment>.*), /$\{segment}
 
+            - id: file-service-swagger
+              uri: lb://file-service
+              predicates:
+                - Path=/file-service/v3/api-docs
+              filters:
+                - RewritePath=/file-service/(?<segment>.*), /$\{segment}
+
             - id: user-accounter
               uri: lb://user-accounter
               predicates:
@@ -61,6 +68,16 @@ spring:
               uri: lb://menu-service
               predicates:
                 - Path=/menu/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: Circuit Breaker
+                    fallbackUri: forward:/service-unavailable
+
+            - id: file-service
+              uri: lb://file-service
+              predicates:
+                - Path=/file/**
               filters:
                 - name: CircuitBreaker
                   args:
