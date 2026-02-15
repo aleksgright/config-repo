@@ -44,6 +44,13 @@ spring:
               filters:
                 - RewritePath=/file-service/(?<segment>.*), /$\{segment}
 
+            - id: notification-service-swagger
+              uri: lb://notification-service
+              predicates:
+                - Path=/notification-service/v3/api-docs
+              filters:
+                - RewritePath=/notification-service/(?<segment>.*), /$\{segment}
+
             - id: user-accounter
               uri: lb://user-accounter
               predicates:
@@ -84,6 +91,16 @@ spring:
                     name: Circuit Breaker
                     fallbackUri: forward:/service-unavailable
 
+            - id: notification-service
+              uri: lb://notification-service
+              predicates:
+                - Path=/notification/**,/info/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: Circuit Breaker
+                    fallbackUri: forward:/service-unavailable
+
 eureka:
   client:
     service-url:
@@ -110,6 +127,8 @@ springdoc:
         url: /file-service/v3/api-docs
       - name: Application
         url: /v3/api-docs/aggregated
+      - name: Notification
+        url: /notification-service/v3/api-docs
 
 management:
   endpoints:
