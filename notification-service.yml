@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: dish-service
+    name: notification-service
 
   jpa:
     database: postgresql
@@ -12,7 +12,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://dish-service-db:5432/highload
+    url: jdbc:postgresql://notification-service-db:5432/highload
     username: postgres
     password: password
   
