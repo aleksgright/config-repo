@@ -19,6 +19,9 @@ spring:
     change-log:
       changelog/db.changelog-master.xml
 
+  kafka:
+    bootstrap-servers: kafka-1:29092
+
 app:
   default-page-size: 50
   max-page-size: 50
