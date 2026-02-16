@@ -18,6 +18,9 @@ spring:
       true
     change-log:
       changelog/db.changelog-master.xml
+  
+  kafka:
+    bootstrap-servers: kafka-1:29092
 
 eureka:
   client:

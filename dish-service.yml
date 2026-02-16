@@ -21,6 +21,9 @@ spring:
       true
     change-log:
       db/changelog/db.changelog-master.xml
+  
+  kafka:
+    bootstrap-servers: kafka-1:29092
 
 app:
   default-page-size: 50
